@@ -27,7 +27,7 @@ Next it's Cops' turn, they move one at a time in a specific order and they aim t
 The game goes on until one of the two sides wins.
 Mr.X wins if:
   - the max number of moves is reached.
-  - the cops cannot move (no legal moves are possible with the ticket they own)
+  - the cops cannot move (no legal moves are possible with the ticket they own)                                                        
 Cops win if:
   - a cop is in the same position of Mr.X at the same time.
   - Mr.X is surrounded and cannot move.
