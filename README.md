@@ -6,10 +6,9 @@ Scotland Yard is a popular stategic game, really straightforward and easy to lea
 A nice GUI (still needing of some improvements) allows you to see and appreciates what your algorithm is doing under the surface. You can test and experiment as you wish.
 
 Before running the main file (scotlandYard.py) there are still few things you have to take care about.
-1) make sure you have installed both Python 2.7 (https://www.python.org/downloads/) and Pygame (http://www.pygame.org/download.shtml).
-2) edit the settings.txt file:
-    - change the LAYOUT_FILENAME path to be consistent with your working directory.
-3) edit the SETTINGS_FILE_NAME at line 9 in settings.py
+- make sure you have installed both Python 2.7 (https://www.python.org/downloads/) and Pygame (http://www.pygame.org/download.shtml).
+- edit the settings.txt file (change the LAYOUT_FILENAME path to be consistent with your working directory)
+- edit the SETTINGS_FILE_NAME at line 9 in settings.py
 
 If you want to switch to your own agent change the MrX_TYPE or COPS_TYPE in settings.txt
 example: if you have created an agent called "SuperAgentMrX" you should put: MrX_TYPE -> SuperAgent (pay attention to CAPITAL letters). 
