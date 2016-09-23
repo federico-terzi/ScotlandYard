@@ -25,8 +25,7 @@ The first player to move is Mr.X. His position is hidden for most of the time, h
 Next it's Cops' turn, they move one at a time in a specific order and they aim to end up in the same position of Mr.X so that they catch him. The cops should cooperate in order to achieve this goal and be as smart as possible in guessing Mr.X position.
 
 The game goes on until one of the two sides wins.                                                                                      
-Mr.X wins if:
-  - the max number of moves is reached.
+Mr.X wins if:- the max number of moves is reached.
   - the cops cannot move (no legal moves are possible with the ticket they own)                                                        
 Cops win if:
   - a cop is in the same position of Mr.X at the same time.
