@@ -13,7 +13,7 @@ Before running the main file (scotlandYard.py) there are still few things you ha
 If you want to switch to your own agent change the MrX_TYPE or COPS_TYPE in settings.txt
 example: if you have created an agent called "SuperAgentMrX" you should put: MrX_TYPE -> SuperAgent (pay attention to CAPITAL letters). 
 
-** RULES of SCOTLAND YARD **
+** RULES of SCOTLAND YARD **                                                                                                            
 Mr.X is escaping from the COPS. His objective is to not get caught before the end of the game. 
 The board game can be seen as an undirected graph, where the nodes are the stations and the edges are the links between them. Stations and links are of different types (colors): taxi, bus, underground, ferry. 
 A player can use a specific transport if and only if:
