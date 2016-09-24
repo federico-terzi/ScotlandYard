@@ -7,6 +7,7 @@ Created on 07/set/2016
 import util
 from settings import Settings
 from rules import Rules, Action
+from inference import ExactInference
 
 class AgentRole:
     """
@@ -128,8 +129,10 @@ class MrX(Agent):
             agentState = AgentState(ticketDict, initialPosition)
         
         self.notHiddenMoves = {}
-        for number in Settings.getNotHiddenMovesNumbers():
-            self.notHiddenMoves[number] = "-"
+        moves = agentState.getMovesHistory()
+        for i, action in enumerate(moves):
+            if i+1 in Settings.getNotHiddenMovesNumbers():
+                self.notHiddenMoves[i+1] = action.getEnd()
         
         Agent.__init__(self, 0, AgentRole.Mr_X, agentState)
     
@@ -142,16 +145,20 @@ class MrX(Agent):
         if Settings.isDebug():
             return Agent.__repr__(self)
         else:
-            
+            not_hidden = {}
+            for number in Settings.getNotHiddenMovesNumbers():
+                not_hidden[number] = "-" if number not in self.notHiddenMoves \
+                                         else self.notHiddenMoves[number]
+                
             return "{} ({}) -> {}\n".format(self.role, self.type, self.index) + "tickets : " \
                  + str(self.agentState.ticketDict) + "\ntickets used: " \
                  + str([action.getTicketType() for action in self.agentState.movesHistory]) \
-                 + "\n" + "\n".join("{} : {}".format(key, self.notHiddenMoves[key]) for key in sorted(self.notHiddenMoves))
+                 + "\n" + "\n".join("{} : {}".format(key, not_hidden[key]) for key in sorted(not_hidden))
     
     def performAction(self, action):
         Agent.performAction(self, action)
         current = len(self.agentState.movesHistory)
-        if current in self.notHiddenMoves:
+        if current in Settings.getNotHiddenMovesNumbers():
             self.notHiddenMoves[current] = self.agentState.getPosition()
         
 class Cop(Agent):
@@ -252,8 +259,36 @@ class KeyboardCop(KeyboardAgent, Cop):
         return KeyboardCop(self.index, self.agentState.deepCopy())
 
 
-
-
+class SmartKeyboardCop(Cop, KeyboardAgent):
+    """
+    A smart cop has a strong ability to guess Mr.X position.
+    """
+    def __init__(self, index, agentState=None, inference = None):
+        Cop.__init__(self, index, agentState)
+        self.type = "SmartCop"
+        if inference is None:
+            self.inference = ExactInference()
+        else:
+            self.inference = inference
+    
+    def deepCopy(self):
+        return SmartKeyboardCop(self.index, self.agentState.deepCopy(), self.inference)
+    
+    def getAction(self, gameState, display):
+        """
+        Ask the user for an action after having displayed the beliefs distribution.
+        """
+        ticketList, notHiddenMoves = gameState.getMrXEvidences()
+        self.inference.updateBeliefs(ticketList, notHiddenMoves, gameState.deepCopy())
+        beliefsDistribution = self.inference.getBeliefsDistribution()  # util.Counter
+        
+        mostLikelyPositions = beliefsDistribution.argMax()  # the list of most likely positions
+        
+        ##### TO CHANGE (WHEN IMPLEMENTED THE GUI DISPLAYER OF BELIEFS DISTRIBUTION)
+        print beliefsDistribution
+        print mostLikelyPositions
+        #####
+        return KeyboardAgent.getAction(self, gameState, display)
 
 
 

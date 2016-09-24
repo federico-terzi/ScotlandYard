@@ -82,6 +82,12 @@ class GameState:
         """
         return len(self.data.getAgentState(0).getMovesHistory())
     
+#     def getLegalPositions(self):
+#         """
+#         Returns the list of legal positions.
+#         """
+#         return self.data.layout.getNodesStations().keys()
+    
     def deepCopy(self):
         """
         Returns a copy of itself.
@@ -117,7 +123,19 @@ class GameState:
         The index should be an integer in the interval [1, numberOfCops].
         """
         return Rules.getLegalActions(self.data.getAgent(copIndex), self.data)
-         
+     
+    def getMrXEvidences(self):
+        """
+        Returns the evidences collected up to this point and the positions where Mr.X was seen.
+        """
+        not_hidden_moves = self.data.agents[0].notHiddenMoves
+        moves_history = self.data.agents[0].getAgentState().getMovesHistory()
+        ticket_history = [action.getTicketType() for action in moves_history]
+        print "\n\n" + "="*30
+        print self
+        print "\n" + str(not_hidden_moves) + "\n" + "="*30
+        return ticket_history, not_hidden_moves 
+          
     
     def generateSuccessor(self, agentIndex, action):
         """
