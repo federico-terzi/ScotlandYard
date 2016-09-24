@@ -1,0 +1,11 @@
+DEBUG_MODE -> false
+LAYOUT_FILENAME -> C:\Users\Selvatici\Desktop\Python\Projects\ScotlandYard\Files\layout.txt
+DISPLAY_TYPE -> GUI
+MAX_NUM_MOVES -> 10
+INITIAL_MrX_POSITION -> 4
+MrX_TYPE -> Keyboard
+COPS_TYPE -> SmartKeyboard
+INITIAL_COPS_POSITION -> 47, random
+NOT_HIDDEN_MOVES -> 2, 4, 13, 18
+MrX_TICKETS -> TAXI=10; BUS=15; UNDERGROUND=3; BLACK=2
+COPS_TICKETS -> TAXI=5; BUS=5; UNDERGROUND=5

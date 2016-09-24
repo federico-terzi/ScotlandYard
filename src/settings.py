@@ -95,7 +95,7 @@ class Settings:
         Returns the display type (see display.py).
         Possibilities:
         - Console
-        - ...
+        - GUI
         
         """
         return Settings._getSettingsAsDict()["DISPLAY_TYPE"]
@@ -117,7 +117,7 @@ class Settings:
         Returns the type of instance for the Cops.
         Possibilities:
         - Keyboard
-        - ...
+        - Smart
         
         """
         return Settings._getSettingsAsDict()["COPS_TYPE"]
@@ -164,14 +164,26 @@ class Settings:
         return Settings.positions[0]
     getInitialMrXPosition = staticmethod(getInitialMrXPosition)
     
-    def getInitialCopsPositions(index):
+    def getInitialCopsPositions(index=None):
         """
         Returns the position of the cop with the specified index (an integer in the interval [1, numberOfCops]
         """
         if Settings.positions is None:
             Settings._assignPositions()
-        return Settings.positions[index]
+        if index is not None:
+            return Settings.positions[index]
+        else:
+            return [Settings.getInitialCopsPositions(i+1) for i in range(Settings.getNumberOfCops())]
     getInitialCopsPositions = staticmethod(getInitialCopsPositions)
+    
+    def getLegalPositions():
+        """
+        Returns the list of the legal positions.
+        """
+        positions = Settings.getLayout().getNodesStations().keys()
+        cops = Settings.getInitialCopsPositions()
+        return [pos for pos in positions if pos not in cops]
+    getLegalPositions = staticmethod(getLegalPositions)
         
     def getNotHiddenMovesNumbers():
         """

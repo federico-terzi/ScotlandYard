@@ -1,0 +1,69 @@
+100
+TAXI; 1 : : 11
+TAXI; 11 : : 12
+TAXI; 12 : : 22
+TAXI; 22 : : 23
+TAXI; 23 : : 24
+TAXI; 24 : : 14
+TAXI; 14 : : 4
+TAXI; 4 : : 5
+TAXI; 5 : : 6
+TAXI; 6 : : 16
+TAXI; 16 : : 26
+TAXI; 26 : : 25
+TAXI; 24 : : 25
+TAXI; 23 : : 33
+TAXI; 43 : : 33
+TAXI; 42 : : 43
+TAXI; 41 : : 42
+TAXI; 41 : : 51
+TAXI; 51 : : 61
+TAXI; 61 : : 62
+TAXI; 62 : : 63
+TAXI; 63 : : 64
+TAXI; 64 : : 74
+TAXI; 84 : : 74
+TAXI; 83 : : 84
+TAXI; 83 : : 82
+TAXI; 82 : : 92
+TAXI; 92 : : 91
+TAXI; 91 : : 81
+TAXI; 81 : : 82
+TAXI; 74 : : 75
+TAXI; 75 : : 76
+TAXI; 76 : : 77
+TAXI; 77 : : 78
+TAXI; 78 : : 88
+TAXI; 88 : : 98
+TAXI; 98 : : 97
+TAXI; 88 : : 89
+TAXI; 77 : : 67
+TAXI; 67 : : 57
+TAXI; 47 : : 57
+BUS; 55 : 45 35 : 25
+TAXI; 57 : : 58
+TAXI; 58 : : 59
+TAXI; 59 : : 60
+TAXI; 60 : : 50
+TAXI; 50 : : 40
+TAXI; 40 : : 30
+TAXI; 30 : : 29
+TAXI; 29 : : 39
+TAXI; 39 : : 49
+TAXI; 59 : : 69
+TAXI; 69 : : 78
+BUS; 26 : 27 28 : 29
+TAXI; 29 : : 19
+TAXI; 19 : : 9
+TAXI; 9 : : 8
+TAXI; 8 : : 7
+TAXI; 7 : : 6
+BUS; 51 : 52 53 54 : 55
+BUS; 11 : 21 31 : 41
+BUS; 61 : 71 : 81
+UNDERGROUND; 92 : 93 94 95 96 : 97
+UNDERGROUND; 33 : 34 35 36 37 38 : 39
+BUS; 60 : 70 80 90 : 89
+BUS; 1 : 2 3 : 4
+BUS; 76 : 86 85 : 84
+UNDERGROUND; 8 : 18 28 38 48 : 58
