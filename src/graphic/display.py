@@ -99,8 +99,13 @@ class ConsoleDisplay(Display):
         print str(role) + " -> " + str(index)
         print "Current position : " + str(currPos)
         print "Possible actions : " + str(possActions)
-        request = raw_input("Destination, TicketType = ").split(',')
-        dest, ticket = int(request[0]), request[1].strip().upper()
+        # request = raw_input("Destination, TicketType = ").split(',')
+        request = raw_input("Destination, TicketType = ")
+        while "," not in request:
+            print "You missed the comma!"
+            request = raw_input("Destination, TicketType = ")
+        fields = request.split(",")
+        dest, ticket = int(fields[0]), fields[1].strip().upper()
         return dest, ticket
 
     def _refresh(self):
@@ -228,9 +233,12 @@ class GUIDisplay(Display):
             message += "\nCurrent position : " + str(currPos)
             message += "\nPossible actions :\n   " + "\n   ".join([a.__repr__() for a in possActions])
         self.showMessage(message, surface=self.infoPanel, bg_color=gu.INFO_PANEL_COLOR)
-        request = raw_input("Destination, TicketType = ").split(',')
-        dest, ticket = int(request[0]), request[1].strip().upper()
-        
+        request = raw_input("Destination, TicketType = ")
+        while "," not in request:
+            print "You missed the comma!"
+            request = raw_input("Destination, TicketType = ")
+        fields = request.split(",")
+        dest, ticket = int(fields[0]), fields[1].strip().upper()
         return dest, ticket
 
     def finish(self):
