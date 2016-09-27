@@ -6,7 +6,12 @@ Created on 09/set/2016
 from layout import Layout
 import util
 
-SETTINGS_FILE_NAME = "C:\Users\Selvatici\Desktop\Python\Projects\ScotlandYard\Files\settings.txt"
+"""
+Uncomment the variable "SETTINGS_FILE_NAME" if you want to load another settings file,
+leave it like this if you want to use the default one"
+"""
+#SETTINGS_FILE_NAME = "C:\Users\Selvatici\Desktop\Python\Projects\ScotlandYard\Files\settings.txt"
+SETTINGS_FILE_NAME = "DEFAULT"
 SETTINGS_SEPARATOR = "->"
 
 
@@ -57,10 +62,15 @@ class Settings:
         The file has to be in the format:
         <key> SETTINGS_SEPARATOR <val>
         """
+        import os
         assert type(fileName) == type("string")
+        
+        if fileName=="DEFAULT": #Load the default settings
+            baseDirectory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            fileName = baseDirectory + os.sep + "Files" + os.sep + "settings.txt"
+
         if not fileName.endswith(".txt"):
             fileName = fileName + ".txt"
-        import os
         if not os.path.exists(fileName):
             raise ValueError(fileName + " does not exist.")
         in_file = open(fileName, "r")

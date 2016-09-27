@@ -1,5 +1,5 @@
 DEBUG_MODE -> false
-LAYOUT_FILENAME -> C:\Users\Selvatici\Desktop\Python\Projects\ScotlandYard\Files\layout.txt
+LAYOUT_FILENAME -> DEFAULT
 DISPLAY_TYPE -> GUI
 MAX_NUM_MOVES -> 10
 INITIAL_MrX_POSITION -> 4

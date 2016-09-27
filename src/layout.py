@@ -40,10 +40,16 @@ class Layout:
         """
         Builds a layout from the content of a .txt file.       
         """
+        import os
         assert type(layoutFileName) == type("string")
+
+        if layoutFileName=="DEFAULT": #Load the default settings
+            baseDirectory = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            layoutFileName = baseDirectory + os.sep + "Files" + os.sep + "layout.txt"
+
         if not layoutFileName.endswith(".txt"):
             layoutFileName = layoutFileName + ".txt"
-        import os
+        
         if not os.path.exists(layoutFileName):
             raise ValueError(layoutFileName + " does not exist.")
         
