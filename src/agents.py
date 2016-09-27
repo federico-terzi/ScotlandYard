@@ -213,6 +213,12 @@ class KeyboardAgent(Agent):
             return None
         
         dest, ticket = display.askForAction(self.role, self.index, currPos, possActions)
+        # check start != end otherwise Action.__init__ will crash the program
+        while dest == currPos:
+            display.showMessage("Illegal action!\ncurrent position == destination")
+            display.wait(ms=2000)
+            dest, ticket = display.askForAction(self.role, self.index, currPos, possActions)
+            
         action = Action(currPos, dest, ticket)
         while action not in possActions:
             display.showMessage("Illegal action! " + action.__repr__())
